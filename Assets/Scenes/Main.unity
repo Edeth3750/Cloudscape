@@ -924,8 +924,6 @@ MonoBehaviour:
   cloudSpawnTimer: 2
   spawnCount: 3
   spawnVariance: 20
-  CloudPrefabs: {fileID: 6526347911143437195, guid: f3e9c4531ded14d0ba700f38b486641f,
-    type: 3}
   cloudHeight: 30
   boundaryWidth: 150
   boundaryLength: 150
