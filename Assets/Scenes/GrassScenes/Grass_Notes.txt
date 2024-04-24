@@ -1,0 +1,56 @@
+There is two colour for grass:
+- Dark Grass
+- Grass
+
+------------------------------------------------------
+------------------------------------------------------
+
+Folder 'Not Used OR F' is a a folder of unsuable models in unity which is getting fixed.
+
+------------------------------------------------------
+------------------------------------------------------
+
+Models with 'VertexPainted' in the name has been vertex painted in blender, however the swaying motion is not achieved since the shader isn't available through lwrp, urp or hdrp. (Having a further look) So currently it is better to use NoVertex versions due to it interfering with texture at the moment.
+
+------------------------------------------------------
+------------------------------------------------------
+
+Models with X90 are models which are rotated due to blender models at times being imported wrongly(tilted) as a grass texture into unity (havent found an exact reason) but when it is put into the grass paint it should be in right postition + when placed an object, it should already have a rotation x value of - 90, so fixing that as 0 would make it face up.
+
+------------------------------------------------------
+------------------------------------------------------
+
+There are 3 types of grass imported into current project:
+
+Type1: Collection of grass blades as a 3D Mesh (Grass paint brush supported
+with Grass_Type1_NoVertex_NoColour_X90 with Terrain settings of '8 Detail Resolution Per Patch' and '128 Detail Resolution'.
+Colour of Grass Controlled with Brush Healthy and Dry colour)
+
+Type2: 3D Mesh where 2D Grass drawings put in 3 directions as one. (Currently only viewable in non-unity programs, still looking into the problem)
+
+Type3: Patch of Grass (This is made to be put as an game object, so don't try to use it as brush, it will overload the computer. Since this was converted from particle system to Mesh, the file size is big which may slow down the game minorily)
+
+------------------------------------------------------
+------------------------------------------------------
+
+Currently in progress of making a new tall grass, where it is not in a patch style. (Tall grass in the mesh size of Type 1)
+However, the size of the grass can be adjusted freely in unity inspector
+to make them a short/tall grass for now.
+
+------------------------------------------------------
+------------------------------------------------------
+
+The test scenes are located in Assets/Scenes/GrassScenes
+
+For each Grass models, there are test scenes for it.
+
+For Scene 1, terrain ups and downs were implemented to show the flexibility of Type 1 model. it should aslo change colour according to the lighting and randomness (healthy and dry colour)
+
+For Scene 2, as mentioned above, it is not rendering properly in unity yet. still looking for a fix.
+
+For Scene 3, I have increased the size of the mesh from X100 Y100 Z100 to 1300 each to show as a tall grass. however the whole thing is one mesh, so the terrain up and downs are not supported. I was thinking to use it small/but tall and patch each part of the terrain.
+
+------------------------------------------------------
+------------------------------------------------------
+
+Personally I think Type1 NO colour NO vertext vesion works the best, however I couldn't tesy with other terrain features just yet.
