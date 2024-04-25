@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17760877, g: 0.22236195, b: 0.3045505, a: 1}
+  m_IndirectSpecularColor: {r: 0.45848674, g: 0.50888985, b: 0.5878512, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -458,12 +458,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ee0397c034e43a58d458c6edea86e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CloudSpeed: 5
+  CloudSpeed: 1
   windDirection: 270
   cloudSpawnTimer: 2
   spawnCount: 3
   spawnVariance: 20
-  cloudHeight: 120
+  cloudHeight: 30
   boundaryWidth: 300
   boundaryLength: 300
 --- !u!4 &1935103214
