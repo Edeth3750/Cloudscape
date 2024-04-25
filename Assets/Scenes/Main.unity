@@ -374,14 +374,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ee0397c034e43a58d458c6edea86e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CloudSpeed: 5
+  CloudSpeed: 2
   windDirection: 270
-  cloudSpawnTimer: 2
+  cloudSpawnTimer: 1
   spawnCount: 3
   spawnVariance: 20
-  cloudHeight: 60
-  boundaryWidth: 300
-  boundaryLength: 300
+  cloudHeight: 35
+  boundaryWidth: 150
+  boundaryLength: 150
 --- !u!4 &1935103214
 Transform:
   m_ObjectHideFlags: 0
