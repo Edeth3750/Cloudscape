@@ -14,7 +14,6 @@ public class CloudSpawner : MonoBehaviour
     [SerializeField] private float cloudSpawnTimer = 3f;
     [SerializeField] private int spawnCount = 3;
     [SerializeField] private float spawnVariance = 10f;
-    [SerializeField] private GameObject CloudPrefabs;
 
     [Header("Boundary Settings")]
     [SerializeField] private int cloudHeight = 50;
@@ -50,6 +49,8 @@ public class CloudSpawner : MonoBehaviour
         }
     }
     
+    private GameObject[] cloudPrefabs;
+
     void Start()
     {
         transform.position = new Vector3(0,0,0);
@@ -57,6 +58,7 @@ public class CloudSpawner : MonoBehaviour
         CloudLayer.transform.parent = transform;
         CloudLayer.name = "CloudLayer";
         transform.eulerAngles = new Vector3(0,windDirection,0);
+        cloudPrefabs = Resources.LoadAll<GameObject>("Clouds");
     }
 
     void Update()
@@ -77,7 +79,7 @@ public class CloudSpawner : MonoBehaviour
     {
         for(int i=0; i < spawnCount; i++)
         {
-            GameObject clouds = Instantiate(CloudPrefabs, transform);
+            GameObject clouds = Instantiate(cloudPrefabs[Random.Range(0, cloudPrefabs.Length)], transform);
             clouds.transform.localPosition = new Vector3(Random.Range(-boundaryWidth/2, boundaryWidth/2), 
                                                         cloudHeight, 
                                                         -boundaryWidth/2-Random.Range(0,spawnVariance));
