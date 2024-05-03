@@ -5,7 +5,6 @@ using UnityEngine;
 public class LightingManager : MonoBehaviour
 {
 
-    []
     [SerializeField] private Light directionalLight;
     [SerializeField] private LightingPreset preset;
 
