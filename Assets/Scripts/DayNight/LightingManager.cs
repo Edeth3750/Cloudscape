@@ -5,10 +5,25 @@ using UnityEngine;
 public class LightingManager : MonoBehaviour
 {
 
+    []
     [SerializeField] private Light directionalLight;
     [SerializeField] private LightingPreset preset;
 
     [SerializeField, Range(0, 24)] private float worldTime;
+
+    //state that alters the rate of time 
+    private enum timeRate
+    {
+        seconds,
+        minutes,
+        hours
+    }
+
+    [SerializeField] private timeRate rateOfTime;
+
+
+    //alter Time.deltaTime to change timelapse of day/night
+    private float scaledTime;
 
 
     private void Update()
@@ -18,7 +33,23 @@ public class LightingManager : MonoBehaviour
 
         if (Application.isPlaying)
         {
-            worldTime += Time.deltaTime;
+            switch (rateOfTime)
+            {
+                case (timeRate.hours):
+                    scaledTime = (Time.deltaTime / 60) / 60;
+                    break;
+
+
+                case (timeRate.minutes):
+                    scaledTime = (Time.deltaTime / 60);
+                    break;
+
+                case (timeRate.seconds):
+                    scaledTime = Time.deltaTime;
+                    break;
+            }
+
+            worldTime += scaledTime;
             worldTime %= 24; //Clamp between 0-24
 
             UpdateLighting(worldTime/24f);
@@ -40,6 +71,8 @@ public class LightingManager : MonoBehaviour
 
     private void OnValidate()
     {
+
+
         if (directionalLight != null)
             return;
 
