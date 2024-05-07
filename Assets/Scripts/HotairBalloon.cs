@@ -29,6 +29,7 @@ public class HotairBalloon : MonoBehaviour
     void Start()
     {
         nextPoint = waypoints[currentWaypoint];
+        transform.position = nextPoint;
         transform.GetChild(0).gameObject.SetActive(false);
     }
 
@@ -87,27 +88,7 @@ public class HotairBalloon : MonoBehaviour
         {
             transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
             Launched = false;
-            StartCoroutine(FadeOut());
+            Destroy(gameObject);
         }
-    }
-    
-    [SerializeField] private float IncrementDelay = 0.2f;
-    [SerializeField] private float FadeIncrement = 0.05f;
-    IEnumerator FadeOut() 
-    {
-        Transform mainBody = transform.GetChild(0).transform;
-        for (float ft = 1f; ft >= 0; ft -= FadeIncrement) 
-        {
-            Color c = mainBody.GetComponent<Renderer>().material.color; 
-            c.a = ft;
-            for(int x = 0; x < mainBody.childCount; x++)
-            {
-                c = mainBody.GetChild(x).GetComponent<Renderer>().material.color; 
-                c.a = ft;
-                mainBody.GetChild(x).GetComponent<Renderer>().material.color = c;
-            }
-            yield return new WaitForSeconds(IncrementDelay);
-        }
-        Destroy(gameObject);
-    }
+    }    
 }

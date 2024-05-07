@@ -23,7 +23,7 @@ public class Plane : MonoBehaviour
     {
         nextPoint = waypoints[currentWaypoint];
         direction = (nextPoint - transform.position).normalized;
-        transform.rotation = Quaternion.LookRotation(direction, Vector3.forward);
+        transform.position = nextPoint;
         transform.GetChild(0).gameObject.SetActive(false);
     }
 
@@ -54,30 +54,12 @@ public class Plane : MonoBehaviour
             currentWaypoint++;
             nextPoint = waypoints[currentWaypoint];
             direction = (nextPoint - transform.position).normalized;
-            transform.rotation = Quaternion.LookRotation(direction, Vector3.forward);
+            transform.LookAt(nextPoint);
         } else
         {
             transform.position = nextPoint;
             Launched = false;
-            StartCoroutine(FadeOut());
+            Destroy(gameObject);
         }
-    }
-    
-    [SerializeField] private float IncrementDelay = 0.2f;
-    [SerializeField] private float FadeIncrement = 0.05f;
-    IEnumerator FadeOut() 
-    {
-        Transform mainBody = transform.GetChild(0).transform;
-        for (float ft = 1f; ft >= 0; ft -= FadeIncrement) 
-        {
-            for(int x = 0; x < mainBody.childCount; x++)
-            {
-                Color c = mainBody.GetChild(x).GetComponent<Renderer>().material.color; 
-                c.a = ft;
-                mainBody.GetChild(x).GetComponent<Renderer>().material.color = c;
-            }
-            yield return new WaitForSeconds(IncrementDelay);
-        }
-        Destroy(gameObject);
     }
 }
