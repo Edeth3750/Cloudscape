@@ -9,7 +9,6 @@ public class EventTimeline
     [Range(0,435)]
     public float TriggerTime;
     public UnityEvent MyEvent;
-    private bool Activated = false; 
 
     public bool isTime(float Time)
     {

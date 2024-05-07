@@ -13,7 +13,8 @@ public class CloudSpawner : MonoBehaviour
     [Range(1,30)]
     [SerializeField] private float cloudSpawnTimer = 3f;
     [SerializeField] private int spawnCount = 3;
-    [SerializeField] private float spawnVariance = 10f;
+    [SerializeField] private float horizontalVariance = 10f;
+    [SerializeField] private float verticalVariance = 5f;
 
     [Header("Boundary Settings")]
     [SerializeField] private int cloudHeight = 50;
@@ -25,6 +26,8 @@ public class CloudSpawner : MonoBehaviour
     [Range(0,1)]
     [SerializeField] private float FadeIncrement = 0.05f;
     
+    [SerializeField] private bool InitialCloudFill = false;
+
     private GameObject CloudLayer;
     private float timer = 0f;
 
@@ -64,6 +67,7 @@ public class CloudSpawner : MonoBehaviour
         CloudLayer.name = "CloudLayer";
         transform.eulerAngles = new Vector3(0,windDirection,0);
         cloudPrefabs = Resources.LoadAll<GameObject>("Clouds");
+        if(InitialCloudFill) InitialCloudSpawn();
     }
 
     void Update()
@@ -86,10 +90,25 @@ public class CloudSpawner : MonoBehaviour
         {
             GameObject clouds = Instantiate(cloudPrefabs[Random.Range(0, cloudPrefabs.Length)], transform);
             clouds.transform.localPosition = new Vector3(Random.Range(-boundaryWidth/2, boundaryWidth/2), 
-                                                        cloudHeight, 
-                                                        -boundaryWidth/2-Random.Range(0,spawnVariance));
+                                                        cloudHeight + Random.Range(0,verticalVariance), 
+                                                        -boundaryWidth/2-Random.Range(0,horizontalVariance));
             clouds.transform.parent = CloudLayer.transform;
             StartCoroutine(FadeIn(clouds)); 
+        }
+    }
+
+    private void InitialCloudSpawn()
+    {
+        for(float y = -boundaryLength/2; y < boundaryLength/2; y = y + cloudSpawnTimer * cloudSpawnTimer)
+        {
+            for(int i=0; i < spawnCount; i++)
+            {
+                GameObject clouds = Instantiate(cloudPrefabs[Random.Range(0, cloudPrefabs.Length)], transform);
+                clouds.transform.localPosition = new Vector3(Random.Range(-boundaryWidth/2, boundaryWidth/2), 
+                                                            cloudHeight + Random.Range(0,verticalVariance), 
+                                                            y - Random.Range(0,horizontalVariance));
+                clouds.transform.parent = CloudLayer.transform;
+            }
         }
     }
 
@@ -130,16 +149,16 @@ public class CloudSpawner : MonoBehaviour
         Destroy(clouds);
     }
 
-    //Culls clouds that are too far, includes spawnVariance to avoid culling newly spawned clouds
+    //Culls clouds that are too far, includes horizontalVariance to avoid culling newly spawned clouds
     private void cullClouds()
     {
         for(int i=0; i<CloudLayer.transform.childCount; i++)
         {
             GameObject cloud = CloudLayer.transform.GetChild(i).gameObject;
-            if(cloud.transform.position.x > boundaryWidth/2+spawnVariance ||
-            cloud.transform.position.x < -boundaryWidth/2-spawnVariance ||
-            cloud.transform.position.z > boundaryLength/2+spawnVariance ||
-            cloud.transform.position.z < -boundaryLength/2-spawnVariance ) 
+            if(cloud.transform.position.x > boundaryWidth/2+horizontalVariance ||
+            cloud.transform.position.x < -boundaryWidth/2-horizontalVariance ||
+            cloud.transform.position.z > boundaryLength/2+horizontalVariance ||
+            cloud.transform.position.z < -boundaryLength/2-horizontalVariance ) 
             {
                 if(cloud.transform.GetChild(0).GetComponent<Renderer>().material.color.a == 1f)
                 {
