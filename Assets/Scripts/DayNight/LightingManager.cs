@@ -17,6 +17,8 @@ public class LightingManager : MonoBehaviour
     private enum timeRate
     {
         seconds,
+        thirdMinutes,
+        halfMinutes,
         minutes,
         hours
     }
@@ -45,6 +47,14 @@ public class LightingManager : MonoBehaviour
 
                 case (timeRate.minutes):
                     scaledTime = (Time.deltaTime / 60);
+                    break;
+
+                case (timeRate.halfMinutes):
+                    scaledTime = (Time.deltaTime / 30);
+                    break;
+
+                case (timeRate.thirdMinutes):
+                    scaledTime = (Time.deltaTime / 20);
                     break;
 
                 case (timeRate.seconds):

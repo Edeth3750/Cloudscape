@@ -709,7 +709,7 @@ MonoBehaviour:
   sunLight: {fileID: 1367959242}
   preset: {fileID: 11400000, guid: cae5546af9f85f743a9e60504fedea8e, type: 2}
   worldTime: 16.5
-  rateOfTime: 2
+  rateOfTime: 1
 --- !u!4 &971549285
 Transform:
   m_ObjectHideFlags: 0
