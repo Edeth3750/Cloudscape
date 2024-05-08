@@ -30,9 +30,9 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    private float timer; 
+    [SerializeField] private float timer; 
     [Header("Events")]
-    [SerializeField] private List<EventTimeline> Events;  
+    [SerializeField] private List<EventTimeline> Events = new List<EventTimeline>(); 
 
     void Start()
     {
