@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class LightingManager : MonoBehaviour
 {
-
+    [Tooltip("Main source of light acting as the sun.")]
     [SerializeField] private Light sunLight;
+
+    [Tooltip("Lighting preset asset. Provides colour for lighting in the scene.")]
     [SerializeField] private LightingPreset preset;
 
+    [Tooltip("current time.")]
     [SerializeField, Range(0, 24)] private float worldTime;
 
     //state that alters the rate of time 
@@ -18,8 +21,9 @@ public class LightingManager : MonoBehaviour
         hours
     }
 
-    [SerializeField] private timeRate rateOfTime;
 
+    [Tooltip("have time scaled to specific amount. e.g. Minute scaling scales sun motion to complete '1 hour' in 60 seconds.")]
+    [SerializeField] private timeRate rateOfTime;
 
     //alter Time.deltaTime to change timelapse of day/night
     private float scaledTime;
