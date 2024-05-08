@@ -5,7 +5,7 @@ using UnityEngine;
 public class LightingManager : MonoBehaviour
 {
 
-    [SerializeField] private Light directionalLight;
+    [SerializeField] private Light sunLight;
     [SerializeField] private LightingPreset preset;
 
     [SerializeField, Range(0, 24)] private float worldTime;
@@ -60,24 +60,23 @@ public class LightingManager : MonoBehaviour
         RenderSettings.ambientLight = preset.ambientColour.Evaluate(timePercent);
         RenderSettings.fogColor = preset.fogColour.Evaluate(timePercent);
 
-        if (directionalLight != null)
+        if (sunLight != null)
         {
-            directionalLight.color = preset.directionalColour.Evaluate(timePercent);
-            directionalLight.transform.localRotation = Quaternion.Euler(new Vector3(timePercent * 360 - 90f, 170f, 0));
+            sunLight.color = preset.directionalColour.Evaluate(timePercent);
+            sunLight.transform.localRotation = Quaternion.Euler(new Vector3(timePercent * 360 - 90f, 170f, 0));
         }
     }
 
 
     private void OnValidate()
     {
-
-
-        if (directionalLight != null)
+        
+        if (sunLight != null)
             return;
 
         if (RenderSettings.sun != null)
         {
-            directionalLight = RenderSettings.sun;
+            sunLight = RenderSettings.sun;
         }
         else
         {
@@ -86,7 +85,7 @@ public class LightingManager : MonoBehaviour
             {
                 if (light.type == LightType.Directional)
                 {
-                    directionalLight = light;
+                    sunLight = light;
                 }
             }
 

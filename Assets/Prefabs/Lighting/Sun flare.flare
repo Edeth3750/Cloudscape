@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!121 &12100000
+Flare:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sun flare
+  m_FlareTexture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+  m_TextureLayout: 2
+  m_Elements:
+  - m_ImageIndex: 0
+    m_Position: 0
+    m_Size: 27.8
+    m_Color: {r: 1, g: 0.903523, b: 0.062745094, a: 1}
+    m_UseLightColor: 0
+    m_Rotate: 0
+    m_Zoom: 0
+    m_Fade: 0
+  - m_ImageIndex: 0
+    m_Position: 0.4
+    m_Size: 4
+    m_Color: {r: 0.0039215665, g: 0.5305938, b: 0.9529412, a: 1}
+    m_UseLightColor: 1
+    m_Rotate: 0
+    m_Zoom: 1
+    m_Fade: 1
+  - m_ImageIndex: 0
+    m_Position: 0.6
+    m_Size: 6.69
+    m_Color: {r: 0.53266287, g: 0.72435975, b: 0.8490566, a: 1}
+    m_UseLightColor: 1
+    m_Rotate: 1
+    m_Zoom: 0
+    m_Fade: 0
+  - m_ImageIndex: 0
+    m_Position: 0.84
+    m_Size: 5.18
+    m_Color: {r: 0.15098791, g: 0.66648763, b: 0.8207547, a: 1}
+    m_UseLightColor: 1
+    m_Rotate: 1
+    m_Zoom: 0
+    m_Fade: 0
+  - m_ImageIndex: 0
+    m_Position: 0
+    m_Size: 11.9
+    m_Color: {r: 1, g: 0.9048885, b: 0, a: 1}
+    m_UseLightColor: 1
+    m_Rotate: 0
+    m_Zoom: 1
+    m_Fade: 1
+  m_UseFog: 1
