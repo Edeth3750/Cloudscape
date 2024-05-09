@@ -347,8 +347,6 @@ MonoBehaviour:
   waypoints:
   - {x: -36, y: 25, z: 350}
   - {x: 180, y: 40, z: -400}
-  IncrementDelay: 0.2
-  FadeIncrement: 0.05
 --- !u!4 &316895550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8116391899118729492, guid: 519931acad05441e0b05a9cb0bc54595,
@@ -788,8 +786,6 @@ MonoBehaviour:
   - {x: 50, y: 30, z: 15}
   - {x: -30, y: 25, z: 40}
   - {x: -50, y: 40, z: -60}
-  IncrementDelay: 0.5
-  FadeIncrement: 0.05
 --- !u!4 &700076390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 525722067687917313, guid: ca9402955e8274b7f905017183b84995,
@@ -1688,8 +1684,8 @@ MonoBehaviour:
   cloudSpawnTimer: 2
   spawnCount: 3
   horizontalVariance: 10
-  verticalVariance: 10
-  cloudHeight: 50
+  verticalVariance: 30
+  cloudHeight: 70
   boundaryWidth: 200
   boundaryLength: 200
   IncrementDelay: 0.2
