@@ -149,7 +149,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1231776
 GameObject:
@@ -442,7 +442,7 @@ PrefabInstance:
     - target: {fileID: 525722067687917313, guid: ca9402955e8274b7f905017183b84995,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 89.58774
+      value: 89.5
       objectReference: {fileID: 0}
     - target: {fileID: 525722067687917313, guid: ca9402955e8274b7f905017183b84995,
         type: 3}
@@ -936,7 +936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 67a0d8a3340b80343bf734c3a1464553, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 67a0d8a3340b80343bf734c3a1464553, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1119,7 +1119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 772bf8db0e8fb20408ffb12163cef9d9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 772bf8db0e8fb20408ffb12163cef9d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1354,7 +1354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c08355e2847c17f4a9fb3f50f9e37c22, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c08355e2847c17f4a9fb3f50f9e37c22, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1680,17 +1680,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CloudSpeed: 3
-  windDirection: 270
-  cloudSpawnTimer: 2
-  spawnCount: 3
-  horizontalVariance: 10
-  verticalVariance: 30
-  cloudHeight: 70
-  boundaryWidth: 200
-  boundaryLength: 200
-  IncrementDelay: 0.2
-  FadeIncrement: 0.05
+  windDirection: 360
+  CloudSize: 5
+  MinCloudDensity: 2
+  MaxCloudDensity: 5
+  RandomRotation: 1
+  RotationUpdateTimer: 0
   InitialCloudFill: 1
+  cloudSpawnTimer: 1
+  spawnCount: 4
+  horizontalVariance: 50
+  verticalVariance: 30
+  cloudHeight: 150
+  boundaryWidth: 500
+  boundaryLength: 500
+  IncrementDelay: 0.1
+  FadeIncrement: 0.025
 --- !u!4 &1935103214
 Transform:
   m_ObjectHideFlags: 0

@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: CloudLayer5
+    uniqueID: 4167030139
+    locked: 0
+  - name: CloudLayer4
+    uniqueID: 2507909715
+    locked: 0
+  - name: CloudLayer3
+    uniqueID: 2204845381
+    locked: 0
+  - name: CloudLayer2
+    uniqueID: 4040980907
+    locked: 0
+  - name: CloudLayer1
+    uniqueID: 330078403
+    locked: 0
