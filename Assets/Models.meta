@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: f64e49e63cf247947be021e60852b46b
+<<<<<<<< HEAD:Assets/Audio.meta
+guid: 79cf5e68c4b68c5499c2f5421d6fd388
+========
+guid: fab466f8ac922c5499328e30c7b50905
+>>>>>>>> Andy:Assets/Models.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
