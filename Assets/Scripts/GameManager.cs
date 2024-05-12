@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     [Header("Events")]
     [SerializeField] private List<EventTimeline> Events = new List<EventTimeline>(); 
 
+    [SerializeField] private List<CloudSpawnerSettings> SettingsChanges = new List<CloudSpawnerSettings>();
+
     void Start()
     {
         timer = 0;
@@ -50,21 +52,15 @@ public class GameManager : MonoBehaviour
                 x--;
             }
         }
+        for(int x=0; x<SettingsChanges.Count; x++)
+        {
+            if(SettingsChanges[x].Timer < timer)
+            {
+                CloudSpawner.cloudSpawner.CloudSettings(SettingsChanges[x]);
+                SettingsChanges.Remove(SettingsChanges[x]);
+                x--;
+            }
+        }
         timer += Time.deltaTime; 
-    }
-
-    public void TestEvent1()
-    {
-        Debug.Log("test event 1");
-    }
-
-    public void TestEvent2()
-    {
-        Debug.Log("test event 2");
-    }
-
-    public void TestEvent3()
-    {
-        Debug.Log("test event 3");
     }
 }
