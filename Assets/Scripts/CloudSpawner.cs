@@ -202,4 +202,19 @@ public class CloudSpawner : MonoBehaviour
             }
         }
     }
+
+    public void CloudSettings(CloudSpawnerSettings other)
+    {
+        CloudSpeed = other.CloudSpeed;
+        CloudSize = other.CloudSize;
+        MinCloudDensity = other.MinCloudDensity;
+        MaxCloudDensity = other.MaxCloudDensity;
+        if(MinCloudDensity > MaxCloudDensity) MaxCloudDensity = MinCloudDensity;
+        RandomRotation = other.RandomRotation;
+        cloudSpawnTimer = other.cloudSpawnTimer;
+        if(cloudSpawnTimer < 1f) cloudSpawnTimer = 1f;
+        spawnCount = other.spawnCount;
+        horizontalVariance = other.horizontalVariance;
+        verticalVariance = other.verticalVariance;
+    }
 }
