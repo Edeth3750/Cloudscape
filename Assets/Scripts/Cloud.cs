@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class Cloud : MonoBehaviour
 {
-    //Using magic num for now, ill make it adjustable later
+    [SerializeField] private CloudScriptable config; 
     public void UpdateRotation()
     {
-        float z = transform.position.z/10;
-        float x = transform.position.x/10;
-        if(z > 30) z = 30;
-        if(z < -30) z = -30;
-        if(x > 30) x = 30;
-        if(x < -30) x = -30;
-        transform.rotation = Quaternion.Euler(z, 0, x * -1);
+        transform.rotation = config.SetRotation(transform.position.x, transform.position.z);
     }
 
     public void SetDensity(int num)
