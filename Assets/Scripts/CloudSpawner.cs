@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,8 +41,14 @@ public class CloudSpawner : MonoBehaviour
     private GameObject CloudLayer;
     private float timer = 0f;
     private int sortOrder = 0;
-    private float updateTimer = 0f;
     private List<Cloud> CloudList = new List<Cloud>();
+
+    [Header("Lighting Settings")]
+    [SerializeField] private float LightingUpdateTimer = 5f; 
+    [SerializeField] private LightingManager lightingManager; 
+    [SerializeField] private Material cloudMaterial; 
+    [Range(0,255)]
+    [SerializeField] private float baseBrightness = 30;
 
     static private CloudSpawner _cloudSpawner;
     static public CloudSpawner cloudSpawner
@@ -79,8 +85,16 @@ public class CloudSpawner : MonoBehaviour
         CloudLayer.transform.parent = transform;
         CloudLayer.name = "CloudLayer";
         transform.eulerAngles = new Vector3(0,windDirection,0);
+        if(cloudMaterial != null) cloudMaterial.color = new Color(1f, 1f, 1f, 1f); //reseting color back to default
         cloudPrefabs = Resources.LoadAll<GameObject>("Clouds");
         if(InitialCloudFill) InitialCloudSpawn();
+        if(lightingManager != null || LightingUpdateTimer <= 0) 
+        {
+            StartCoroutine(CloudLighting());
+        } else {
+            Debug.Log("Lighting Manager or LightingUpdateTimer is not assigned to CloudSpawner. Cloud Lighting will not update.");
+        }
+        if(RotationUpdateTimer > 0f) StartCoroutine(CloudRotation());
     }
 
     void Update()
@@ -94,15 +108,6 @@ public class CloudSpawner : MonoBehaviour
         } else 
         {
             timer += Time.deltaTime;
-        }
-        updateTimer += Time.deltaTime;
-        if(RotationUpdateTimer > 0f && updateTimer > RotationUpdateTimer)
-        {
-            updateTimer = 0f;
-            foreach(Cloud c in CloudList)
-            {
-                c.UpdateRotation(); 
-            }
         }
     }
 
@@ -172,9 +177,7 @@ public class CloudSpawner : MonoBehaviour
             //setting transparency to default after fade in
             for(int x = 0; x < clouds.transform.childCount; x++)
             {
-                Color c = clouds.transform.GetChild(x).GetComponent<Renderer>().material.color; 
-                c.a = 1f;
-                clouds.transform.GetChild(x).GetComponent<Renderer>().material.color = c;
+                clouds.transform.GetChild(x).GetComponent<Renderer>().material = cloudMaterial;
             }
         } else 
         {
@@ -200,6 +203,40 @@ public class CloudSpawner : MonoBehaviour
                     StartCoroutine(Fade(cloud, true)); 
                 } 
             }
+        }
+    }
+
+    private IEnumerator CloudRotation()
+    {
+        while (GameManager.instance.GameState && RotationUpdateTimer > 0)
+        {
+            foreach(Cloud c in CloudList)
+            {
+                c.UpdateRotation(); 
+            }
+
+            yield return new WaitForSeconds(RotationUpdateTimer);
+        }
+    }
+
+
+    private IEnumerator CloudLighting()
+    {
+        float maxBrightness = 255;
+        float noon = 12f; 
+
+        while (GameManager.instance.GameState && LightingUpdateTimer > 0)
+        {
+            float worldTime = lightingManager.WorldTime;
+            float brightness = maxBrightness * (1 - Mathf.Abs(noon - worldTime) / 12f);
+            brightness = Mathf.Min(maxBrightness, brightness + baseBrightness);
+            Color c = cloudMaterial.color;
+            c.r = brightness / maxBrightness;
+            c.g = brightness / maxBrightness;
+            c.b = brightness / maxBrightness;
+            cloudMaterial.color = c;
+
+            yield return new WaitForSeconds(LightingUpdateTimer);
         }
     }
 

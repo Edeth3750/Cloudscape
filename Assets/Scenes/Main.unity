@@ -1264,6 +1264,10 @@ MonoBehaviour:
   boundaryLength: 1000
   IncrementDelay: 0.1
   FadeIncrement: 0.025
+  LightingUpdateTimer: 5
+  lightingManager: {fileID: 1923702895}
+  cloudMaterial: {fileID: 2100000, guid: 59c4d31a2bded42beb69dc4983ff22a7, type: 2}
+  baseBrightness: 30
 --- !u!4 &1935103214
 Transform:
   m_ObjectHideFlags: 0
