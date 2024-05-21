@@ -135,6 +135,7 @@ public class CloudSpawner : MonoBehaviour
             CloudList.Add(c);
             c.SetLayer(CalculateSortLayer(extraHeight), sortOrder);
             sortOrder++;
+            c.SetHeight(cloudHeight + extraHeight);
             if(RotationUpdateTimer > 0f) c.UpdateRotation(); 
             c.SetDensity(Random.Range(MinCloudDensity, MaxCloudDensity));
             if(FadeIn) StartCoroutine(Fade(clouds, false)); 

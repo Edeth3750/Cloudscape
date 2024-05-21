@@ -5,9 +5,18 @@ using UnityEngine;
 public class Cloud : MonoBehaviour
 {
     [SerializeField] private CloudScriptable config; 
+    [SerializeField] private float height;
+    
+    public void SetHeight(float height)
+    {
+        this.height = height;
+    }
+
     public void UpdateRotation()
     {
         transform.rotation = config.SetRotation(transform.position.x, transform.position.z);
+        float heightAdjustment = config.AdjustHeight(transform.position.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, height + heightAdjustment, transform.position.z);
     }
 
     public void SetDensity(int num)

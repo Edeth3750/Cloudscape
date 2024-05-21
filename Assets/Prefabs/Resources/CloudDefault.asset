@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTiltX: 30
   maxTiltY: 30
-  xRotationMulitplier: 10
-  zRotationMulitplier: 10
+  xRotationMulitplier: 20
+  zRotationMulitplier: 20
+  heightMultiplier: 0.3
