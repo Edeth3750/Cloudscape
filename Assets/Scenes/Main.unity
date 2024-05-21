@@ -219,7 +219,7 @@ PrefabInstance:
     - target: {fileID: 2253366926042589214, guid: 7101fc487f8996d47bacc1470555bd56,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2253366926042589214, guid: 7101fc487f8996d47bacc1470555bd56,
         type: 3}
@@ -341,18 +341,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 447217574}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &316895551 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 316895549, guid: 519931acad05441e0b05a9cb0bc54595,
-    type: 3}
-  m_PrefabInstance: {fileID: 447217574}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316895548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a142f64c92349844a887e892a5104c90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &320829687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1041,7 +1029,7 @@ MonoBehaviour:
     MyEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 316895551}
+        - m_Target: {fileID: 0}
           m_MethodName: Launch
           m_Mode: 1
           m_Arguments:
@@ -1099,7 +1087,7 @@ MonoBehaviour:
     cloudSpawnTimer: 3
     spawnCount: 4
     horizontalVariance: 30
-    verticalVariance: 50
+    verticalVariance: 100
   - Timer: 150
     CloudSpeed: 5
     CloudSize: 2
@@ -1110,7 +1098,7 @@ MonoBehaviour:
     cloudSpawnTimer: 3
     spawnCount: 2
     horizontalVariance: 50
-    verticalVariance: 70
+    verticalVariance: 130
   - Timer: 250
     CloudSpeed: 3
     CloudSize: 3
@@ -1121,10 +1109,10 @@ MonoBehaviour:
     cloudSpawnTimer: 3
     spawnCount: 2
     horizontalVariance: 50
-    verticalVariance: 70
+    verticalVariance: 130
   - Timer: 335
     CloudSpeed: 5
-    CloudSize: 2
+    CloudSize: 4
     MinCloudDensity: 3
     MaxCloudDensity: 5
     RandomRotation: 0
@@ -1132,7 +1120,7 @@ MonoBehaviour:
     cloudSpawnTimer: 4
     spawnCount: 2
     horizontalVariance: 50
-    verticalVariance: 70
+    verticalVariance: 130
 --- !u!4 &1747581390
 Transform:
   m_ObjectHideFlags: 0
@@ -1257,8 +1245,8 @@ MonoBehaviour:
   InitialCloudFill: 1
   cloudSpawnTimer: 2.5
   spawnCount: 3
-  horizontalVariance: 50
-  verticalVariance: 70
+  horizontalVariance: 90
+  verticalVariance: 130
   cloudHeight: 150
   boundaryWidth: 1000
   boundaryLength: 1000
