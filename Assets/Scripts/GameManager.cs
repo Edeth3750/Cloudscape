@@ -30,17 +30,20 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    [SerializeField] private float timer; 
+    private bool gameState = true;
+    public bool GameState
+    {
+        get
+        {
+            return gameState;
+        }
+    }
+
+    [SerializeField] private float timer = 0f; 
     [Header("Events")]
     [SerializeField] private List<EventTimeline> Events = new List<EventTimeline>(); 
 
     [SerializeField] private List<CloudSpawnerSettings> SettingsChanges = new List<CloudSpawnerSettings>();
-
-    void Start()
-    {
-        timer = 0;
-    }
-
     void Update()
     {
         for(int x=0; x<Events.Count; x++)

@@ -13,6 +13,14 @@ public class LightingManager : MonoBehaviour
     [Tooltip("current time.")]
     [SerializeField, Range(0, 24)] private float worldTime;
 
+    public float WorldTime
+    {
+        get
+        {
+            return worldTime;
+        }
+    }
+
     //state that alters the rate of time 
     private enum timeRate
     {
