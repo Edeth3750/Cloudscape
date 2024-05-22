@@ -34,11 +34,11 @@ RenderSettings:
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
-  m_ReflectionBounces: 2
-  m_ReflectionIntensity: 1
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2112550168}
-  m_IndirectSpecularColor: {r: 0.17760877, g: 0.22236195, b: 0.3045505, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1250,12 +1250,12 @@ MonoBehaviour:
   cloudHeight: 150
   boundaryWidth: 1000
   boundaryLength: 1000
-  IncrementDelay: 0.1
+  IncrementDelay: 0.3
   FadeIncrement: 0.025
   LightingUpdateTimer: 5
   lightingManager: {fileID: 1923702895}
   cloudMaterial: {fileID: 2100000, guid: 59c4d31a2bded42beb69dc4983ff22a7, type: 2}
-  baseBrightness: 30
+  baseBrightness: 100
 --- !u!4 &1935103214
 Transform:
   m_ObjectHideFlags: 0
@@ -1264,7 +1264,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935103212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 120}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
