@@ -66,4 +66,9 @@ public class GameManager : MonoBehaviour
         }
         timer += Time.deltaTime; 
     }
+
+    
+    public void ExitGame() {
+        Application.Quit();
+    }
 }
